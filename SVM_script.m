@@ -2,13 +2,14 @@
 % matrix in: el X im X bl X time
 %% parameters
 id_num=59;
-output_folder='/Users/VisRecLab/Desktop//SVM/Results/';
+output_folder='/Users/dannem/Documents/Reconstruction/Analysis/SVM/';
 mkdir(output_folder);
 c=1;
+perms=1000;
 % load('/Users/VisRecLab/Documents/Reconstruction/SVM/Data/s10_single_trial_discr.mat')
-%% 3.03.2016
-filename='s10_same'
-output = runSVM_DN(DataMat_same,id_num,c);
+%% 6.03.2016
+filename='SVM_s10_perms'
+output = runSVM_DN(DataMat_same,id_num,perms,c,[100:115 360:380]);
 save([output_folder filename '_' datestr(now, 'dd-mmm-yyyy')  '.mat'],'output');
 toc
 figure
@@ -16,14 +17,25 @@ temp=squeeze(mean(mean(output.ap,1),2));
 plot(linspace(-90,910,length(temp)),temp)
 title('s10_time_discr_same');
 
-filename='s10_diff'
-output = runSVM_DN(DataMat_diff,id_num,c);
-save([output_folder filename '_' datestr(now, 'dd-mmm-yyyy')  '.mat'],'output');
-toc
-figure
-temp=squeeze(mean(mean(output.ap,1),2));
-plot(linspace(-90,910,length(temp)),temp)
-title('s10_time_discr_diff');
+
+% %% 3.03.2016
+% filename='SVM_s10_perms'
+% output = runSVM_DN(DataMat_same,id_num,c);
+% save([output_folder filename '_' datestr(now, 'dd-mmm-yyyy')  '.mat'],'output');
+% toc
+% figure
+% temp=squeeze(mean(mean(output.ap,1),2));
+% plot(linspace(-90,910,length(temp)),temp)
+% title('s10_time_discr_same');
+% 
+% filename='s10_diff'
+% output = runSVM_DN(DataMat_diff,id_num,c);
+% save([output_folder filename '_' datestr(now, 'dd-mmm-yyyy')  '.mat'],'output');
+% toc
+% figure
+% temp=squeeze(mean(mean(output.ap,1),2));
+% plot(linspace(-90,910,length(temp)),temp)
+% title('s10_time_discr_diff');
 
 %% 1.03.2016
 

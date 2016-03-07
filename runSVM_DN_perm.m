@@ -1,4 +1,12 @@
 function output = runSVM_DN_perm(DataMat,idNum,numOfperm,cPar,timeBins)
+%% This function computes SVM with permutations to assess significance.
+% The input is a data file from eeg_preprocessing.m
+% Inputs    DataMat:        4-D matrix
+%           idNum:          number of identities
+%           numOfperm:      number of desired permutations
+%           cPar:           c (criterion value for SVM)
+%           timeBins:       desired time points
+% Outputs   output:         discrimination cell matrix with ap,d and c.
 if nargin<4
     cPar=1;
     timeBins=size(DataMat,4);
