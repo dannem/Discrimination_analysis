@@ -10,7 +10,7 @@ perms=1000;
 %% 6.03.2016
 %permutations
 filename='SVM_s10_perms'
-output_perm = runSVM_DN(output_same_w,id_num,perms,c,[100:115 360:380]);
+output_perm = runSVM_DN_perm(output_same_w,id_num,perms,c,[100:115 360:380]);
 save([output_folder filename '_' datestr(now, 'dd-mmm-yyyy')  '.mat'],'output_perm');
 toc
 % true

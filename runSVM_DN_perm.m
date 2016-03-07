@@ -13,13 +13,14 @@ if nargin<4
 elseif nargin<5
     timeBins=size(DataMat,4);
 end
+DataMat=DataMat(:,:,:,timeBins);
 combos = nchoosek([1:idNum],2); % setting number of combinations of identities
 tic
 for in=1:numOfperm
     for emo=1:2;
         for j=1:size(combos,1)
-            parfor i=1:timeBins
-                [ap, d, c]=apply_classf_libsvm_MA_full_DN_perm(squeeze(DataMat(:,:,:,i)),combos(j,:),emo,cPar); %FOR TRUE CLASSIFICATION
+            for i=1:size(DataMat,4);
+                [ap, d, c]=apply_classf_libsvm_MA_full_DN_perm(squeeze(DataMat(:,:,:,i)),combos(j,:),emo); %FOR TRUE CLASSIFICATION
                 apOut_par(i, 1)=ap;
                 dOut_par(i, 1)=d;
                 cOut_par(i, 1)=c;
@@ -35,6 +36,6 @@ for in=1:numOfperm
     in
     toc
 end
-display('End of process')
+disp('End of process')
 toc
 close(h)
