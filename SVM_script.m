@@ -6,23 +6,37 @@ output_folder='/Users/dannem/Documents/Reconstruction/Analysis/SVM/';
 mkdir(output_folder);
 c=1;
 perms=1000;
-% load('/Users/VisRecLab/Documents/Reconstruction/SVM/Data/s10_single_trial_discr.mat')
-%% 6.03.2016
-%permutations
-% filename='SVM_s10_perms'
-% output_perm = runSVM_DN_perm(output_same_w,id_num,perms,c,[100:115 360:380]);
-% save([output_folder filename '_' datestr(now, 'dd-mmm-yyyy')  '.mat'],'output_perm');
+
+% %% 7.03.2016 - svm for data without zscoring.
+% 
+% filename='SVM_s10_nozscore'
+% output_no_zscore = runSVM_DN(output_same_w,id_num,c);
+% save([output_folder filename '_' datestr(now, 'dd-mmm-yyyy')  '.mat'],'output_no_zscore');
 % toc
-% true
-filename='SVM_s10_true'
-output_true = runSVM_DN(output_same_w,id_num,c);
-save([output_folder filename '_' datestr(now, 'dd-mmm-yyyy')  '.mat'],'output_true');
-toc
-% figure true
-figure
-temp=squeeze(mean(mean(output_true.ap,1),2));
-plot(linspace(-90,910,length(temp)),temp)
-title('s10_time_discr_same_true');
+% % figure true
+% figure
+% temp=squeeze(mean(mean(output_no_zscore.ap,1),2));
+% plot(linspace(-90,910,length(temp)),temp)
+% title('s10_time_no_zscore');
+
+
+% load('/Users/VisRecLab/Documents/Reconstruction/SVM/Data/s10_single_trial_discr.mat')
+% %% 6.03.2016
+% %permutations
+% % filename='SVM_s10_perms'
+% % output_perm = runSVM_DN_perm(output_same_w,id_num,perms,c,[100:115 360:380]);
+% % save([output_folder filename '_' datestr(now, 'dd-mmm-yyyy')  '.mat'],'output_perm');
+% % toc
+% % true
+% filename='SVM_s10_true'
+% output_true = runSVM_DN(output_same_w,id_num,c);
+% save([output_folder filename '_' datestr(now, 'dd-mmm-yyyy')  '.mat'],'output_true');
+% toc
+% % figure true
+% figure
+% temp=squeeze(mean(mean(output_true.ap,1),2));
+% plot(linspace(-90,910,length(temp)),temp)
+% title('s10_time_discr_same_true');
 
 %% Archive
 % %% 3.03.2016

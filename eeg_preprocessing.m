@@ -1,7 +1,7 @@
 %% Input: an images X blocks cell matrix produced by aggrERP.m
 
 %% eeg preporcessing script
-load('Users/dannem/Documents/Reconstruction/Analysis/s10_data_cleaned_eeg.mat');
+load('/Users/dannem/Documents/Reconstruction/Analysis/s10_data_cleaned_eeg.mat');
 %% zscoring across trials and electrodes
 output=zscore_across_elecs_trials(s10_eeg_data);
 %% arranging identities in pairs
