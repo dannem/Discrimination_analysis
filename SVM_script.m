@@ -9,10 +9,10 @@ perms=1000;
 % load('/Users/VisRecLab/Documents/Reconstruction/SVM/Data/s10_single_trial_discr.mat')
 %% 6.03.2016
 %permutations
-filename='SVM_s10_perms'
-output_perm = runSVM_DN_perm(output_same_w,id_num,perms,c,[100:115 360:380]);
-save([output_folder filename '_' datestr(now, 'dd-mmm-yyyy')  '.mat'],'output_perm');
-toc
+% filename='SVM_s10_perms'
+% output_perm = runSVM_DN_perm(output_same_w,id_num,perms,c,[100:115 360:380]);
+% save([output_folder filename '_' datestr(now, 'dd-mmm-yyyy')  '.mat'],'output_perm');
+% toc
 % true
 filename='SVM_s10_true'
 output_true = runSVM_DN(output_same_w,id_num,c);

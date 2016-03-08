@@ -19,8 +19,8 @@ tic
 for in=1:numOfperm
     for emo=1:2;
         for j=1:size(combos,1)
-            for i=1:size(DataMat,4);
-                [ap, d, c]=apply_classf_libsvm_MA_full_DN_perm(squeeze(DataMat(:,:,:,i)),combos(j,:),emo); %FOR TRUE CLASSIFICATION
+            parfor i=1:size(DataMat,4);
+                [ap, d, c]=apply_classf_libsvm_MA_full_DN_perm(squeeze(DataMat(:,:,:,i)),combos(j,:),emo) %FOR TRUE CLASSIFICATION
                 apOut_par(i, 1)=ap;
                 dOut_par(i, 1)=d;
                 cOut_par(i, 1)=c;
