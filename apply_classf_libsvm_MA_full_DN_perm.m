@@ -3,7 +3,7 @@
 %%%[ap, dp, MI, c_mn, c_std]=apply_classf_libsvm_MA_full(V_sel,univar_cond, idpair)
 %%%can run apply_classf_libsvm_onepair for each voxel-ROI later for better estimates
 %%% 1-time points, 2-identities/expressions, 3-blocks
-function [ap, d, c, acc]=apply_classf_libsvm_MA_full_DN(V_sel, idpair,emo) %dp
+function [ap, d, c, acc]=apply_classf_libsvm_MA_full_DN(V_sel, idpair,emo,lbls) %dp
 
 case_n=size(V_sel,3);
 
@@ -38,11 +38,11 @@ V_sel_2s=V_sel_2s';
 % lbls=repmat(lbls,[1,case_n])';
 
 %% For Permutations UNCOMMENT HERE
-lbls=repmat([0 1],case_n,1);
-vecPerm=randn(case_n,1);
-lbls(vecPerm>0,1)=1;
-lbls(vecPerm>0,2)=0;
-lbls=reshape(lbls',case_n*2,1);
+% lbls=repmat([0 1],case_n,1);
+% vecPerm=randn(case_n,1);
+% lbls(vecPerm>0,1)=1;
+% lbls(vecPerm>0,2)=0;
+% lbls=reshape(lbls',case_n*2,1);
 
 
 
