@@ -67,4 +67,4 @@ for in=1:size(DataMat,4);
 end
 disp('End of process')
 toc
-close(h)
+
