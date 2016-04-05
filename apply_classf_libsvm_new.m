@@ -1,4 +1,4 @@
-function [ap, d, c, acc]=apply_classf_libsvm_MA_full_DN(V_sel, idpair,emo,c) %dp
+function [ap, d, c, acc]=apply_classf_libsvm_new(V_sel, idpair,emo,c) %dp
 %% c recommended 1.
 if nargin<4
     c=1;
@@ -66,8 +66,8 @@ for case_k=1:case_n
 %     test_V=test_V./repmat(max_vals, [test_sz 1]);
 
     optstr=['-s 0 -t 0 -c ', num2str(c), ' -q'];
-    svmStruct = libsvm_svmtrain(train_lbl, train_V, optstr);
-    [lbl_clsf, ~, ~] = libsvm_svmpredict(test_lbl, test_V, svmStruct);%optstr
+    svmStruct = svmtrain(train_lbl, train_V, optstr);
+    [lbl_clsf, ~, ~] = svmpredict(test_lbl, test_V, svmStruct);%optstr
 
     acc(1, case_k)=mean(single(lbl_clsf==test_lbl));
 

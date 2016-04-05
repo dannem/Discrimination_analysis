@@ -3,7 +3,7 @@
 %%%[ap, dp, MI, c_mn, c_std]=apply_classf_libsvm_MA_full(V_sel,univar_cond, idpair)
 %%%can run apply_classf_libsvm_onepair for each voxel-ROI later for better estimates
 %%% 1-time points, 2-identities/expressions, 3-blocks
-function [ap, d, c, acc]=apply_classf_libsvm_MA_full_DN(V_sel, idpair,emo,lbls) %dp
+function [ap, d, c, acc]=apply_classf_libsvm_new_perm(V_sel, idpair,emo,lbls) %dp
 
 case_n=size(V_sel,3);
 
@@ -92,8 +92,8 @@ for case_k=1:case_n
 
 
     optstr=['-s 0 -t 0 -c ', num2str(c), ' -q'];
-    svmStruct = libsvm_svmtrain(train_lbl, train_V, optstr);
-    [lbl_clsf, ~, ~] = libsvm_svmpredict(test_lbl, test_V, svmStruct);%optstr
+    svmStruct = svmtrain(train_lbl, train_V, optstr);
+    [lbl_clsf, ~, ~] = svmpredict(test_lbl, test_V, svmStruct,'-q');%optstr
 
     acc(1, case_k)=mean(single(lbl_clsf==test_lbl));
 

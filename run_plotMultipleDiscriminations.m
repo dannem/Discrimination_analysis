@@ -1,4 +1,4 @@
-plotMultipleDiscriminations(-90,910,1,output)
+plotMultipleDiscriminations(-100,900,1,output_true)
 %% Arguments:
 % 1.    start of the epoch
 % 2.    end of the epoch
