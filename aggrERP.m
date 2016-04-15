@@ -8,9 +8,10 @@ for i=1:size(lwdata,2)
     id1=strfind(name,'idn');
     id1=id1(1);
     id2=strfind(name,'bck');
-    id=str2double(name(1,id1+4:id2-17));
+    id=str2double(name(1,id1+4:id2-41));
+    bk1=strfind(name,'blk');
     bk2=strfind(name,'icfilt');
-    bk=str2double(name(1,id2+4:bk2(1)-2));
+    bk=str2double(name(1,bk1+4:bk2(1)-2));
     data=lwdata(i).data;
     data=reshape(data,size(data,1),size(data,2),size(data,6));
 %     data=squeeze(data);
@@ -22,14 +23,17 @@ ind(60:100,:)=[];
 
 
 
-a=output2;
-a(:,7)=[];
-out=cell(118,15);
-for i=1:118
-    for j=1:15
-        out{i,j}=cat(1,output1{i,j},a{i,j});
+output_new=cell(118,16);
+for j=1:118
+    for i=1:16
+        a=output1{j,i};
+        b=output1{j,i+16};
+        c=cat(1,a,b);
+        output_new{j,i}=c;
     end
 end
+
+output_new(:,4)=[];
 %% within blocks
 % output_all=cell(159,1);
 % ind_all=NaN(159,1);

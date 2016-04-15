@@ -8,11 +8,14 @@ for i=1:bck_num %going through blocks
     for j=1:tim_bin % going through time
         bk_temp=[];
         for k=1:id_num % going through identities
+            if isempty(cellIn{k,i})
+            else
             temp=cellIn{k,i};
             temp=temp(:,:,j);
             id(k)=size(temp,1);
             temp=temp(:);
             bk_temp=[bk_temp;temp];
+            end
         end
         bk_temp=zscore(bk_temp);
         counter=1;

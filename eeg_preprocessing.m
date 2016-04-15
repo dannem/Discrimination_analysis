@@ -3,7 +3,7 @@
 %% eeg preporcessing script
 load('/Users/dannem/Documents/Reconstruction/Analysis/s10_data_cleaned_eeg.mat');
 %% zscoring across trials and electrodes
-output=zscore_across_elecs_trials(output);
+output=zscore_across_elecs_trials(output1);
 %% arranging identities in pairs
 output=arrange_inds(output);
 %% averging trials
