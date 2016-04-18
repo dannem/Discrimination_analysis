@@ -1,17 +1,22 @@
 %% within blocks
 % size of lwdata.data: 2    62     1     1     1   512
 % size of output matrix: cell images X blocks
+firstId='idt';
+firstIdLength=length(firstId);
+secondId='ar';
+firstBlock='blk';
+firstBlockLength=length(firstBlock);
+secondBlock='icfilt';
 output=cell(159,30);
 ind=NaN(159,30);
 for i=1:size(lwdata,2)
     name=lwdata(i).header.name;
-    id1=strfind(name,'idn');
-    id1=id1(1);
-    id2=strfind(name,'bck');
-    id=str2double(name(1,id1+4:id2-41));
-    bk1=strfind(name,'blk');
-    bk2=strfind(name,'icfilt');
-    bk=str2double(name(1,bk1+4:bk2(1)-2));
+    id1=strfind(name,firstId);
+    id2=strfind(name,secondId);
+    id=str2double(name(1,id1(1)+firstIdLength:id2(1)-1));
+    bk1=strfind(name,firstBlock);
+    bk2=strfind(name,secondBlock);
+    bk=str2double(name(1,bk1(1)+firstBlockLength:bk2(1)-2));
     data=lwdata(i).data;
     data=reshape(data,size(data,1),size(data,2),size(data,6));
 %     data=squeeze(data);

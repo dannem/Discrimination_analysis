@@ -1,4 +1,4 @@
-function output=zscore_across_elecs_trials(cellIn)
+function output=zscore_across_elecs_trials_ids(cellIn)
 output=cell(size(cellIn));
 elc_num=size(cellIn{1,1},2);
 tim_bin=size(cellIn{1,1},3);
