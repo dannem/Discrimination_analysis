@@ -1,4 +1,5 @@
-plotMultipleDiscriminations(-100,900,1,output_true)
+plotMultipleDiscriminations(-100,900,1,output_disc1, output_disc2)
+
 %% Arguments:
 % 1.    start of the epoch
 % 2.    end of the epoch

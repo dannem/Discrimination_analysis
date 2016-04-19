@@ -1,42 +1,33 @@
-%% run SVM srcipt
+%% run SVM srciptv
 % matrix in: el X im X bl X time
 %% parameters
 id_num=59;
-output_folder='/Users/dannem/Documents/Reconstruction/Analysis/SVM/';
+output_folder='/Users/dannem/Documents/Reconstruction/Analysis/SVM/Results/';
 mkdir(output_folder);
 c=1;
 perms=1000;
-
-% %% 7.03.2016 - svm for data without zscoring.
-% 
-% filename='SVM_s10_nozscore'
-% output_no_zscore = runSVM_DN(output_same_w,id_num,c);
-% save([output_folder filename '_' datestr(now, 'dd-mmm-yyyy')  '.mat'],'output_no_zscore');
-% toc
-% % figure true
-% figure
-% temp=squeeze(mean(mean(output_no_zscore.ap,1),2));
-% plot(linspace(-90,910,length(temp)),temp)
-% title('s10_time_no_zscore');
-
-
 % load('/Users/VisRecLab/Documents/Reconstruction/SVM/Data/s10_single_trial_discr.mat')
-% %% 6.03.2016
-% %permutations
-% % filename='SVM_s10_perms'
-% % output_perm = runSVM_DN_perm(output_same_w,id_num,perms,c,[100:115 360:380]);
-% % save([output_folder filename '_' datestr(now, 'dd-mmm-yyyy')  '.mat'],'output_perm');
-% % toc
-% % true
-% filename='SVM_s10_true'
-% output_true = runSVM_DN(output_same_w,id_num,c);
-% save([output_folder filename '_' datestr(now, 'dd-mmm-yyyy')  '.mat'],'output_true');
-% toc
-% % figure true
-% figure
-% temp=squeeze(mean(mean(output_true.ap,1),2));
-% plot(linspace(-90,910,length(temp)),temp)
-% title('s10_time_discr_same_true');
+%% 6.03.2016
+%permutations
+try
+    
+    filename=['SVM_s20_ica'];
+    [output,perm_mat] = runSVM(output_diff_w,id_num,c);
+    save([output_folder filename '_' datestr(now, 'dd-mmm-yyyy')  '.mat'],'output','perm_mat');
+    toc
+    
+    % true
+    
+    disp('End job');
+catch ME
+    disp('Error occured')
+    rethrow(ME)
+end
+% poolobj=gcp('nocreate');
+% delete(poolobj);
+% c= parcluster('default_jobmanager');
+% finished_jobs=findJob(c,'State','finished','Username','nestorad');
+% delete(finished_jobs);
 
 %% Archive
 % %% 3.03.2016
@@ -48,7 +39,7 @@ perms=1000;
 % temp=squeeze(mean(mean(output.ap,1),2));
 % plot(linspace(-90,910,length(temp)),temp)
 % title('s10_time_discr_same');
-% 
+%
 % filename='s10_diff'
 % output = runSVM_DN(DataMat_diff,id_num,c);
 % save([output_folder filename '_' datestr(now, 'dd-mmm-yyyy')  '.mat'],'output');
@@ -71,7 +62,7 @@ perms=1000;
 %     title(filename);
 % end
 %% 26.02.2016
-% %% 
+% %%
 % filename='s10_time_discr_single_trials_all';
 % output = runSVM_DN(DataMat_all,id_num,c);
 % save([output_folder filename '_' datestr(now, 'dd-mmm-yyyy')  '.mat'],'output');
@@ -80,7 +71,7 @@ perms=1000;
 % temp=squeeze(mean(mean(output.ap,1),2));
 % plot(linspace(-90,910,length(temp)),temp)
 % title('s10_time_discr_single_trials_all');
-% 
+%
 % filename='s10_time_discr_single_trials_sess1';
 % output = runSVM_DN(DataMat_bk1,id_num,c);
 % save([output_folder filename '_' datestr(now, 'dd-mmm-yyyy')  '.mat'],'output');
@@ -89,7 +80,7 @@ perms=1000;
 % temp=squeeze(mean(mean(output.ap,1),2));
 % plot(linspace(-90,910,length(temp)),temp)
 % title('s10_time_discr_single_trials_session 1');
-% 
+%
 % filename='s10_time_discr_single_trials_sess2';
 % output = runSVM_DN(DataMat_bk2,id_num,c);
 % save([output_folder filename '_' datestr(now, 'dd-mmm-yyyy')  '.mat'],'output');

@@ -59,13 +59,13 @@ combos = nchoosek([1:idNum],2); % setting number of combinations of identities
 tic
 
 %% computing true discrimination
-h = waitbar(0,'Please wait...');
+% h = waitbar(0,'Please wait...');
 for in=1:size(timeBins,2);
     apOut=NaN(length(combos),1);
     dOut=NaN(length(combos),1);
     cOut=NaN(length(combos),1);
     dataIn=squeeze(DataMat(:,:,:,in));
-    waitbar(in / size(timeBins,2))
+%     waitbar(in / size(timeBins,2))
     for emo=1:2;
         parfor j=1:size(combos,1)
             [ap, d, c]=apply_classf_libsvm_new(dataIn,combos(j,:),emo,cPar);
@@ -80,7 +80,7 @@ for in=1:size(timeBins,2);
     in
     toc
 end
-close(h)
+% close(h)
 toc
 disp('End of true SVM');
 
@@ -88,8 +88,8 @@ disp('End of true SVM');
 %% computing permutations
 if numOfperm
     disp('Start permutation test')
-    barOn=1; % if progress bar is needed
-    h = waitbar(0,'Please wait...');
+%     barOn=0; % if progress bar is needed
+%     h = waitbar(0,'Please wait...');
     permMat=zeros(size(DataMat,3)*2,numOfperm);
     ranMat=rand(size(DataMat,3)*2,numOfperm)-0.5;
     permMat(ranMat>0)=1;
@@ -100,9 +100,9 @@ if numOfperm
         cOut=NaN(2,length(combos),numOfperm);
         for emo=1:2;
             for j=1:size(combos,1)
-                if barOn
-                    waitbar((j+(emo-1)*length(combos)) / (size(combos,1)*2))
-                end
+%                 if barOn
+%                     waitbar((j+(emo-1)*length(combos)) / (size(combos,1)*2))
+%                 end
                 com=combos(j,:);
                 dataIn=squeeze(DataMat(:,:,:,in));
                 apOut_par=NaN(numOfperm,1);
@@ -125,7 +125,7 @@ if numOfperm
         in
         toc
     end
-    close(h)
+%     close(h)
     disp('End of permutation analysis')
     toc
 end

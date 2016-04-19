@@ -5,7 +5,7 @@ function plotMultipleDiscriminations(begTime,endTime,kind,varargin)
 % 3.    kind of variable: 1 - accuracy; 2 - d prime; 3 - c
 % 4.    all the 'acc' files
 %%
-x=linspace(begTime,endTime,size(varargin{1}.ap,3));
+x=linspace(begTime,endTime,size(varargin{1}.ap,1));
 counter=1;
 figure('units','normalized','outerposition',[0 0 1 1])
 for i=1:length(varargin)
@@ -18,7 +18,7 @@ for i=1:length(varargin)
         case 3
             temp=temp.c;
     end
-    temp=squeeze(mean(mean(temp,2),1));
+    temp=squeeze(mean(mean(temp,2),3));
     plot(x,temp)
     hold on
     legNames{counter}=inputname(3+i);

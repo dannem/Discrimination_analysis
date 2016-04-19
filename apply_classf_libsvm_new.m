@@ -67,7 +67,7 @@ for case_k=1:case_n
 
     optstr=['-s 0 -t 0 -c ', num2str(c), ' -q'];
     svmStruct = svmtrain(train_lbl, train_V, optstr);
-    [lbl_clsf, ~, ~] = svmpredict(test_lbl, test_V, svmStruct);%optstr
+    [lbl_clsf, ~, ~] = svmpredict(test_lbl, test_V, svmStruct,'-q');%optstr
 
     acc(1, case_k)=mean(single(lbl_clsf==test_lbl));
 
