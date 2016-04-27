@@ -1,11 +1,17 @@
-function plotMultipleDiscriminations(begTime,endTime,kind,varargin)
+function plotMultipleDiscriminations(begTime,endTime,bins,kind,varargin)
+% Function to present discrimination. Size: time X emotions X pairs
 %% Arguments:
 % 1.    start of the epoch
 % 2.    end of the epoch
-% 3.    kind of variable: 1 - accuracy; 2 - d prime; 3 - c
-% 4.    all the 'acc' files
+% 3.    number of bins: 1 - based on data; else - length
+% 4.    kind of variable: 1 - accuracy; 2 - d prime; 3 - c
+% 5.    all the 'acc' files
 %%
-x=linspace(begTime,endTime,size(varargin{1}.ap,1));
+if bins==1
+    x=linspace(begTime,endTime,size(varargin{1}.ap,1));
+else
+    x=linspace(begTime,endTime,bins);
+end
 counter=1;
 figure('units','normalized','outerposition',[0 0 1 1])
 for i=1:length(varargin)
@@ -18,10 +24,13 @@ for i=1:length(varargin)
         case 3
             temp=temp.c;
     end
+    if bins>1
+        temp=temp(1:bins,:,:);
+    end
     temp=squeeze(mean(mean(temp,2),3));
     plot(x,temp)
     hold on
-    legNames{counter}=inputname(3+i);
+    legNames{counter}=inputname(4+i);
     try
     legNames{counter}=strrep(legNames{counter},'_m',' -');
     legNames{counter}=strrep(legNames{counter},'_p',' +');
