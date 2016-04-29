@@ -3,7 +3,7 @@
 %% eeg preporcessing script
 % load('/Users/dannem/Documents/Reconstruction/Analysis/s10_data_cleaned_eeg.mat');
 %% importing data from lwdata
-[output,ind]=lwdata2cell(lwdata,'idn','ep','blk','icfilt');
+[output,ind]=lwdata2cell(lwdata,'idn','ar','blc','icfilt');
 % deleting empty cells 
 output(60:100,:)=[]; 
 ind(60:100,:)=[];
