@@ -51,9 +51,15 @@ elseif type==4 %within session %unweighted averages
     for i=1:size(inCell,1)% going through images
         for j=1:size(inCell,2)/2% going through blocks
             temp1=inCell{i,j*2-1};
+            if isempty(temp1)
+            else
             temp1=mean(temp1,1);
+            end
             temp2=inCell{i,j*2};
+            if isempty(temp2)
+            else
             temp2=mean(temp2,1);
+            end
             temp3=cat(1,temp1,temp2);
             temp=mean(temp3,1);
             output(i,j,:,:)=temp;
@@ -66,9 +72,15 @@ else %unweighted averages % between session
     for i=1:size(inCell,1)
         for j=1:size(inCell,2)/2
             temp1=inCell{i,j};
+            if isempty(temp1)
+            else
             temp1=mean(temp1,1);
+            end
             temp2=inCell{i,j+blk_num};
+            if isempty(temp2)
+            else
             temp2=mean(temp2,1);
+            end
             temp3=cat(1,temp1,temp2);
             temp=mean(temp3,1);
             output(i,j,:,:)=temp;

@@ -1,4 +1,4 @@
-plotMultipleDiscriminations(-100,900,500,1,output_disc_01, output_disc_02, output_disc_03, output_disc_04, output_disc_05, output_disc)
+plotMultipleDiscriminations(-100,900,500,1,output_disc)
 
 %% time X emotions X pairs
 %Arguments:

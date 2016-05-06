@@ -10,22 +10,24 @@ for i=1:bck_num %going through blocks
         for k=1:id_num % going through identities
             if isempty(cellIn{k,i})
             else
-            temp=cellIn{k,i};
-            temp=temp(:,:,j);
-            id(k)=size(temp,1);
-            temp=temp(:);
-            bk_temp=[bk_temp;temp];
+                temp=cellIn{k,i};
+                temp=temp(:,:,j);
+                id(k)=size(temp,1);
+                temp=temp(:);
+                bk_temp=[bk_temp;temp];
             end
         end
         bk_temp=zscore(bk_temp);
-        counter=1;
+        
         for k=1:id_num % going through identities
-            vec_size=id(k)*elc_num;
-            temp=bk_temp(counter:counter+vec_size-1);
-            temp=reshape(temp,id(k),elc_num,1);
-            output{k,i}=cat(3,output{k,i},temp);
-            counter=counter+vec_size;
+            if isempty(cellIn{k,i})
+            else
+                sizeValue=size(cellIn{k,i},1)*size(cellIn{k,i},2);
+                temp=bk_temp(1:sizeValue);
+                bk_temp(1:sizeValue)=[];
+                output{k,i}(:,:,j)=reshape(temp,size(cellIn{k,i},1),...
+                    size(cellIn{k,i},2));
+            end
         end
     end
 end
-        

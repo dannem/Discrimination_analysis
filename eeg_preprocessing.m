@@ -3,12 +3,12 @@
 %% eeg preporcessing script
 % load('/Users/dannem/Documents/Reconstruction/Analysis/s10_data_cleaned_eeg.mat');
 %% importing data from lwdata
-[output,ind]=lwdata2cell(lwdata,'idn','ar','blc','icfilt');
+[output,ind]=lwdata2cell(lwdata,'idn','ep','blk','ica');
 % deleting empty cells 
 output(60:100,:)=[]; 
 ind(60:100,:)=[];
-%% zscoring across trials and electrodes
-output=zscore_across_elecs_trials(output);
+%% zscoring across trials and electrodes and identities
+output=zscore_across_elecs_trials_ids(output);
 %% arranging identities in pairs
 output=arrange_inds(output);
 %% averging trials
