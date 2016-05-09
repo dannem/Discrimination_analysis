@@ -12,8 +12,8 @@ output.s50_b20_n35=RFE_find_maxima_in_bins(output_disc,output_same_uw,50,20,35);
 output.s50_b20_n30=RFE_find_maxima_in_bins(output_disc,output_same_uw,50,20,30);
 %% performing ranking
 output_rank.s50_b40_n20=RFE_SVM_ICA(output.s50_b40_n20,59,68);
-output_rank.s100_b40_n20=RFE_SVM_ICA(output.s100_b40_n20,59,68);
-output_rank.s150_b40_n20=RFE_SVM_ICA(output.s150_b40_n20,59,68);
+output_rank.s100_b40_n19=RFE_SVM_ICA(output.s100_b40_n19,59,68);
+output_rank.s150_b40_n18=RFE_SVM_ICA(output.s150_b40_n18,59,68);
 output_rank.s50_b80_n10=RFE_SVM_ICA(output.s50_b80_n10,59,68);
 output_rank.s50_b30_n26=RFE_SVM_ICA(output.s50_b30_n26,59,68);
 output_rank.s50_b20_n35=RFE_SVM_ICA(output.s50_b20_n35,59,68);
@@ -21,7 +21,7 @@ output_rank.s50_b20_n30=RFE_SVM_ICA(output.s50_b20_n30,59,68);
 
 
 %% visualizing orders
-output_rank_mean=mean(mean(output_rank.s50_b20_n30,2),3);
+output_rank_mean=mean(mean(output_rank.s50_b40_n20,2),3);
 output_rank_mean=output_rank_mean(1:68);
 [b,rank_ics]=sort(output_rank_mean);
 
@@ -49,15 +49,13 @@ s50_b20_n35=mean(s50_b20_n35,2);
 figure
 plot(s50_b40_n20)
 hold on
-plot(s100_b40_n19)
-hold on
-plot(s150_b40_n18)
-hold on
+% plot(s100_b40_n19)
+% hold on
+% plot(s150_b40_n18)
+% hold on
 plot(s50_b20_n35)
-title('Graph of Sine and Cosine Between -2\pi and 2\pi')
+title('discrimination')
 legend('start: 50 ms; length: 40 ms; size: 20 bins',...
-    'start: 100 ms; length: 40 ms; size: 19 bins',...
-    'start: 150 ms; length: 40 ms; size: 18 bins',...
     'start: 50 ms; length: 20 ms; size: 35 bins')
 xlabel('ICs')
 ylabel('accuracy %')
