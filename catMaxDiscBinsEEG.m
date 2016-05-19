@@ -1,5 +1,5 @@
 
-disc=squeeze(mean(mean(output_disc_icfilt_02.ap,2),3));
+disc=squeeze(mean(mean(output_disc_10_blocks_zscore2.ap,2),3));
 %removing 119 seconds (19 post stimulus)
 remBin=62;
 % removing  170 seconds (70 post stimulus)
@@ -13,22 +13,22 @@ binSize=25;
 indexMax=[];
 disc1=reshape(disc,binSize,18);
 maxdisc=max(disc1);
-for i=1:size(disc1,2)-12
+for i=1:size(disc1,2)
     a=find(disc1(:,i)==maxdisc(i));
     indexMax(i)=remBin+size(disc1,1)*i+a-size(disc1,1);
 end
 
 % load data 64 X 118 X  16 X 512
-output_diff_w=eeg_data_icfilt_02(:,:,:,indexMax); 
+output_same_w_3=output_same_w_3(:,:,:,indexMax); 
 out=[];
 for i=1:size(indexMax,2)
-    out=cat(1,out,output_diff_w(:,:,:,i));
+    out=cat(1,out,output_same_w_3(:,:,:,i));
 end
-output_diff_w=out;
+output_same_w_3=out;
 clear a binSize disc disc1 i indexMax maxdisc out remBin
 
 %%
-a=squeeze(mean(mean(output_disc.ap,2),3));
+a=squeeze(mean(mean(output_disc3.ap,2),3));
 
 %% Comments
 % SVM on icfilted data

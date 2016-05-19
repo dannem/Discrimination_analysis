@@ -7,6 +7,7 @@
 % deleting empty cells 
 output(60:100,:)=[]; 
 ind(60:100,:)=[];
+clear ind
 %% zscoring across trials and electrodes and identities
 output=zscore_across_elecs_trials_ids(output);
 
@@ -20,3 +21,4 @@ output=arrange_inds(output);
 % output_diff_w=average_eeg(output,3);
 output_same_uw=average_eeg(output,4);
 % output_diff_uw=average_eeg(output,5);
+output_same_w_3=average_eeg(output,6);

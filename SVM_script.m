@@ -12,7 +12,7 @@ perms=1000;
 try
     
 %     filename=['SVM_s20_ica'];
-    [output_disc1,perm_mat] = runSVM(data,id_num,c);
+    [output_disc3,perm_mat] = runSVM(output_same_w_3,id_num,c);
 %     save([output_folder filename '_' datestr(now, 'dd-mmm-yyyy')  '.mat'],'output','perm_mat');
     toc
     
