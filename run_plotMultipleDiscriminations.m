@@ -1,5 +1,16 @@
-plotMultipleDiscriminations(-100,900,500,1,output_disc_20_1, output_disc_10_blocks, output_disc_16_blocks)
-
+%% only familiar
+out=perm_separation(60,54);
+output_disc_03_unf_el.ap=output_disc_03_el.ap(:,:,out.indOne);
+output_disc_05_unf_el.ap=output_disc_05_el.ap(:,:,out.indOne);
+output_disc_07_unf_el.ap=output_disc_07_el.ap(:,:,out.indOne);
+output_disc_03_unf_old.ap=output_disc_03_old.ap(:,:,out.indOne);
+output_disc_05_unf_old.ap=output_disc_05_old.ap(:,:,out.indOne);
+output_disc_07_unf_old.ap=output_disc_07_old.ap(:,:,out.indOne);
+%% plot
+plotMultipleDiscriminations(-100,900,1,1,...
+    output_disc_03_unf_el,output_disc_05_unf_el,output_disc_07_unf_el,...
+    output_disc_03_unf_old,output_disc_05_unf_old,output_disc_07_unf_old)
+% output_disc_03,output_disc_05,output_disc_07
 %% time X emotions X pairs
 %Arguments:
 % 1.    start of the epoch

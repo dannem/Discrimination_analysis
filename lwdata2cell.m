@@ -22,10 +22,17 @@ for i=1:size(lwdata,2)
     bk1=strfind(name,firstBlock);
     bk2=strfind(name,secondBlock);
     bk=str2double(name(1,bk1(1)+firstBlockLength:bk2(1)-2));
+    if bk>599 && bk<699
+        bk=bk-599;
+    elseif bk>699 && bk<799
+        bk=bk-699+17;
+    end
     data=lwdata(i).data;
     data=reshape(data,size(data,1),size(data,2),size(data,6));
 %     data=squeeze(data);
     output{id,bk}=data;
     ind(id,bk)=size(output{id,bk},1);
 end %2    62     1     1     1   512
-
+a=cellfun(@isempty, output);
+output(find(a(:,1)>0),:)=[];
+ind(find(a(:,1)>0),:)=[];
