@@ -1,4 +1,4 @@
-function plotMultipleDiscriminations(begTime,endTime,bins,kind,varargin)
+function [out]=plotMultipleDiscriminations(begTime,endTime,bins,kind,varargin)
 % Function to present discrimination. Size: time X emotions X pairs
 %% Arguments:
 % 1.    start of the epoch
@@ -28,6 +28,7 @@ for i=1:length(varargin)
         temp=temp(1:bins,:,:);
     end
     temp=squeeze(mean(mean(temp,2),3));
+    out(counter,:)=temp;
     plot(x,temp)
     hold on
     legNames{counter}=inputname(4+i);

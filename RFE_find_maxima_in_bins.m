@@ -1,5 +1,6 @@
 function output=RFE_find_maxima_in_bins(disc,dataIn,startMS,binSizeMS,binNum,sRate)
-disc=squeeze(mean(mean(disc.ap,2),3));
+% disc=squeeze(mean(mean(disc.ap,2),3));
+disc=squeeze(mean(disc.ap(:,1,:),3));
 % convert times to bins
 if nargin<6
     sRate=512;

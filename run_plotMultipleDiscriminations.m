@@ -1,16 +1,22 @@
 %% only familiar
-out=perm_separation(60,54);
-output_disc_03_unf_el.ap=output_disc_03_el.ap(:,:,out.indOne);
-output_disc_05_unf_el.ap=output_disc_05_el.ap(:,:,out.indOne);
-output_disc_07_unf_el.ap=output_disc_07_el.ap(:,:,out.indOne);
-output_disc_03_unf_old.ap=output_disc_03_old.ap(:,:,out.indOne);
-output_disc_05_unf_old.ap=output_disc_05_old.ap(:,:,out.indOne);
-output_disc_07_unf_old.ap=output_disc_07_old.ap(:,:,out.indOne);
+% out=perm_separation(60,54);
+% output_disc_14.ap=output_disc_14.ap(:,:,out.indOne);
+% output_disc_13.ap=output_disc_13.ap(:,:,out.indOne);
+% output_disc_12.ap=output_disc_12.ap(:,:,out.indOne);
+% output_disc_11.ap=output_disc_11.ap(:,:,out.indOne);
+% output_disc_10.ap=output_disc_10.ap(:,:,out.indOne);
+% output_disc_07.ap=output_disc_07.ap(:,:,out.indOne);
+% output_disc_05.ap=output_disc_05.ap(:,:,out.indOne);
+% output_disc_03.ap=output_disc_03.ap(:,:,out.indOne);
+% output_disc_07.ap=output_disc_07.ap(:,:,out.indOne);
 %% plot
-plotMultipleDiscriminations(-100,900,1,1,...
-    output_disc_03_unf_el,output_disc_05_unf_el,output_disc_07_unf_el,...
-    output_disc_03_unf_old,output_disc_05_unf_old,output_disc_07_unf_old)
+all=plotMultipleDiscriminations(-100,900,1,1,...
+    output_disc_03, output_disc_05, output_disc_07, output_disc_10, output_disc_11, output_disc_12, output_disc_13, output_disc_14);
 % output_disc_03,output_disc_05,output_disc_07
+
+%% average plot
+figure
+plot(linspace(-100,900,size(all,2)),mean(all,1));
 %% time X emotions X pairs
 %Arguments:
 % 1.    start of the epoch
