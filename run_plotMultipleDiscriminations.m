@@ -1,22 +1,46 @@
 %% only familiar
-% out=perm_separation(60,54);
-% output_disc_14.ap=output_disc_14.ap(:,:,out.indOne);
-% output_disc_13.ap=output_disc_13.ap(:,:,out.indOne);
-% output_disc_12.ap=output_disc_12.ap(:,:,out.indOne);
-% output_disc_11.ap=output_disc_11.ap(:,:,out.indOne);
-% output_disc_10.ap=output_disc_10.ap(:,:,out.indOne);
-% output_disc_07.ap=output_disc_07.ap(:,:,out.indOne);
-% output_disc_05.ap=output_disc_05.ap(:,:,out.indOne);
-% output_disc_03.ap=output_disc_03.ap(:,:,out.indOne);
-% output_disc_07.ap=output_disc_07.ap(:,:,out.indOne);
+out=perm_separation(60,54);
+s20.ap=output_disc.ap(:,:,out.indOne);
+% elec22.ap=output_by_elec(22).ap(:,:,out.indOne);
+% elec3.ap=output_by_elec(3).ap(:,:,out.indOne);
+% elec4.ap=output_by_elec(4).ap(:,:,out.indOne);
+% elec5.ap=output_by_elec(5).ap(:,:,out.indOne);
+% elec6.ap=output_by_elec(6).ap(:,:,out.indOne);
+% elec7.ap=output_by_elec(7).ap(:,:,out.indOne);
+% elec8.ap=output_by_elec(8).ap(:,:,out.indOne);
+% elec9.ap=output_by_elec(9).ap(:,:,out.indOne);
+% elec10.ap=output_by_elec(10).ap(:,:,out.indOne);
+% elec11.ap=output_by_elec(11).ap(:,:,out.indOne);
+% elec12.ap=output_by_elec(12).ap(:,:,out.indOne);
+% elec13.ap=output_by_elec(13).ap(:,:,out.indOne);
+% elec14.ap=output_by_elec(14).ap(:,:,out.indOne);
+% elec15.ap=output_by_elec(15).ap(:,:,out.indOne);
+% elec16.ap=output_by_elec(16).ap(:,:,out.indOne);
+% elec17.ap=output_by_elec(17).ap(:,:,out.indOne);
+% elec18.ap=output_by_elec(18).ap(:,:,out.indOne);
+% elec64.ap=output_by_elec(64).ap(:,:,out.indOne);
+% % output_disc_12dc.ap=output_disc_12dc.ap(:,:,out.indOne);
+% % output_disc_11dc.ap=output_disc_11dc.ap(:,:,out.indOne);
+% % output_disc_10dc.ap=output_disc_10dc.ap(:,:,out.indOne);
+% % output_disc_07dc.ap=output_disc_07dc.ap(:,:,out.indOne);
+% % output_disc_05dc.ap=output_disc_05dc.ap(:,:,out.indOne);
+% output_disc_03dc.ap=output_disc_03dc.ap(:,:,out.indOne);
+% output_disc_13dc.ap=output_disc_13dc.ap(:,:,out.indOne);
 %% plot
 all=plotMultipleDiscriminations(-100,900,1,1,...
-    output_disc_03, output_disc_05, output_disc_07, output_disc_10, output_disc_11, output_disc_12, output_disc_13, output_disc_14);
+    s20);
+%     elec1,elec2,elec3,elec4,elec5,elec6,elec7,elec8,elec9,elec10);
 % output_disc_03,output_disc_05,output_disc_07
 
-%% average plot
+%% boxplot
+% load('/Users/dannem/Desktop/SVM_all_by_elec_26-Aug-2016.mat')
+x=discMat(output_by_elec,1,1);
 figure
-plot(linspace(-100,900,size(all,2)),mean(all,1));
+boxplot(x,'Whisker',0);
+
+%% average plot
+% figure
+% plot(linspace(-100,900,size(all,2)),mean(all,1));
 %% time X emotions X pairs
 %Arguments:
 % 1.    start of the epoch
