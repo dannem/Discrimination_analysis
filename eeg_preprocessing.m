@@ -27,4 +27,4 @@ clear output
 output_same_uw=norm_oulier_cap(output_same_uw);
 
 %% saving
-save('/Users/dannem/Desktop/ERP_s20_dc_not_cleaned.mat','output_same_uw');
+save('/Users/dannem/Desktop/ERP_s03_dc_ica_not_cleaned.mat','output_same_uw');

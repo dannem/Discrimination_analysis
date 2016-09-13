@@ -1,6 +1,7 @@
 %% only familiar
 out=perm_separation(60,54);
-s20.ap=output_disc.ap(:,:,out.indOne);
+s03new.ap=output_disc_s03_new.ap(:,:,out.indOne);
+s03old.ap=output_disc_s03dc.ap(:,:,out.indOne);
 % elec22.ap=output_by_elec(22).ap(:,:,out.indOne);
 % elec3.ap=output_by_elec(3).ap(:,:,out.indOne);
 % elec4.ap=output_by_elec(4).ap(:,:,out.indOne);
@@ -28,7 +29,7 @@ s20.ap=output_disc.ap(:,:,out.indOne);
 % output_disc_13dc.ap=output_disc_13dc.ap(:,:,out.indOne);
 %% plot
 all=plotMultipleDiscriminations(-100,900,1,1,...
-    s20);
+    s03new,s03old);
 %     elec1,elec2,elec3,elec4,elec5,elec6,elec7,elec8,elec9,elec10);
 % output_disc_03,output_disc_05,output_disc_07
 
