@@ -1,7 +1,11 @@
 %% only familiar
 out=perm_separation(60,54);
-s03new.ap=output_disc_s03_new.ap(:,:,out.indOne);
-s03old.ap=output_disc_s03dc.ap(:,:,out.indOne);
+all10unf.ap=output_disc_10.ap(:,:,out.indOne);
+all10fam.ap=output_disc_10.ap(:,:,out.indTwo);
+all10acr.ap=output_disc_10.ap(:,:,out.indAcross);
+allSEunf.ap=output_disc_se.ap(:,:,out.indOne);
+allSEfam.ap=output_disc_se.ap(:,:,out.indTwo);
+allSEacr.ap=output_disc_se.ap(:,:,out.indAcross);
 % elec22.ap=output_by_elec(22).ap(:,:,out.indOne);
 % elec3.ap=output_by_elec(3).ap(:,:,out.indOne);
 % elec4.ap=output_by_elec(4).ap(:,:,out.indOne);
@@ -29,7 +33,7 @@ s03old.ap=output_disc_s03dc.ap(:,:,out.indOne);
 % output_disc_13dc.ap=output_disc_13dc.ap(:,:,out.indOne);
 %% plot
 all=plotMultipleDiscriminations(-100,900,1,1,...
-    s03new,s03old);
+    all10acr,all10fam,all10unf,allSEacr,allSEfam,allSEunf);
 %     elec1,elec2,elec3,elec4,elec5,elec6,elec7,elec8,elec9,elec10);
 % output_disc_03,output_disc_05,output_disc_07
 
