@@ -1,11 +1,11 @@
 %% only familiar
 out=perm_separation(60,54);
-all10unf.ap=output_disc_10.ap(:,:,out.indOne);
-all10fam.ap=output_disc_10.ap(:,:,out.indTwo);
-all10acr.ap=output_disc_10.ap(:,:,out.indAcross);
-allSEunf.ap=output_disc_se.ap(:,:,out.indOne);
-allSEfam.ap=output_disc_se.ap(:,:,out.indTwo);
-allSEacr.ap=output_disc_se.ap(:,:,out.indAcross);
+across_4_els.ap=output_disc_across.ap(:,:,out.indOne);
+across_4_els_5bins.ap=output_disc_acorss_4el_5bins.ap(:,:,out.indOne);
+across_64_els_5bins.ap=output_disc_acorss_64el_5bins.ap(:,:,out.indOne);
+across_64_els_1bin.ap=output_disc_acorss_64el_1bin.ap(:,:,out.indOne);
+within_4_els_5bins.ap=output_disc_within_4els_5bins.ap(:,:,out.indOne);
+within_64_els_5bins.ap=output_disc_within_64els_5bins.ap(:,:,out.indOne);
 % elec22.ap=output_by_elec(22).ap(:,:,out.indOne);
 % elec3.ap=output_by_elec(3).ap(:,:,out.indOne);
 % elec4.ap=output_by_elec(4).ap(:,:,out.indOne);
@@ -32,8 +32,18 @@ allSEacr.ap=output_disc_se.ap(:,:,out.indAcross);
 % output_disc_03dc.ap=output_disc_03dc.ap(:,:,out.indOne);
 % output_disc_13dc.ap=output_disc_13dc.ap(:,:,out.indOne);
 %% plot
-all=plotMultipleDiscriminations(-100,900,1,1,...
-    all10acr,all10fam,all10unf,allSEacr,allSEfam,allSEunf);
+
+plotMultipleDiscriminations(-100,900,1,1,...
+  across_4_els);
+%%
+figure
+subplot(2,1,1)
+plot(perc)
+subplot(2,1,2)
+plot(mean(mean(output_disc_across.ap,2),3))
+%%
+all_d=plotMultipleDiscriminations(-100,900,1,1,...
+   sub_all_09_across, sub_all_10_within, sub_all_12_across, sub_all_12_within);
 %     elec1,elec2,elec3,elec4,elec5,elec6,elec7,elec8,elec9,elec10);
 % output_disc_03,output_disc_05,output_disc_07
 

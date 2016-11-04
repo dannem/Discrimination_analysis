@@ -27,9 +27,9 @@ else
         for j=1:size(input,3)
             for k=1:size(input,4)
                 temp=squeeze(input(:,i,j,k));
-                temp=temp-mean(temp)+0.5;
-                temp=temp/(max(abs(temp(:)))*2);
-                temp=temp+0.5;
+                temp=zscore(temp);
+                temp=temp./repmat(max(abs(temp)),size(temp,1),1);
+                temp=(temp+1)/2;
                 output(:,i,j,k)=temp;
             end
         end

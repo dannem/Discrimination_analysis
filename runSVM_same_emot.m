@@ -1,4 +1,4 @@
-function [output,permMat] = runSVM(DataMat,idNum,cPar,timeBins,numOfperm)
+function [output,permMat] = runSVM_same_emot(DataMat,idNum,cPar,timeBins,numOfperm)
 %% This function computes SVM with permutations to assess significance.
 % The input is a data file from eeg_preprocessing.m
 % Inputs    DataMat:        4-D matrix (time: els X ims X bls X time)
@@ -67,8 +67,8 @@ for in=1:size(timeBins,2);
     dataIn=squeeze(DataMat(:,:,:,in));
 %     waitbar(in / size(timeBins,2))
     for emo=1:2;
-        parfor j=1:size(combos,1)
-            [ap, d, c]=apply_classf_libsvm_new(dataIn,combos(j,:),emo,cPar);
+        for j=1:size(combos,1)
+            [ap, d, c]=apply_classf_libsvm_same_emot(dataIn,combos(j,:),emo,cPar);
             apOut(j)=ap;
             dOut(j)=d;
             cOut(j)=c;

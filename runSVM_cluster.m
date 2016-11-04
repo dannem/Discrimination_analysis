@@ -67,7 +67,7 @@ for in=1:size(timeBins,2);
     dataIn=squeeze(DataMat(:,:,:,in));
 %     waitbar(in / size(timeBins,2))
     for emo=1:2;
-        parfor j=1:size(combos,1)
+        for j=1:size(combos,1)
             [ap, d, c]=apply_classf_libsvm_new(dataIn,combos(j,:),emo,cPar);
             apOut(j)=ap;
             dOut(j)=d;

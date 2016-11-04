@@ -4,12 +4,13 @@
 % load('/Users/dannem/Documents/Reconstruction/Analysis/s10_data_cleaned_eeg.mat');
 %% importing data from lwdata
 [output,ind]=lwdata2cell(lwdata,'id','bl','seg','but');
+% output(61:100,:)=[];
 output=output(:,[2:17 19:end]); %removing training
 clear ind
 %% zscoring 
 % output=zscore_across_elecs_trials_ids(output_03); %across trials and
 % electrodes and images`
-output=zscore_across_elecs_only(output); % across electrodes only
+output=zscore_across_elecs_time(output); % across electrodes and time
 %% normalizing the data (between 0 and 1) and removing outliers (>3 std).
 output=norm_oulier_cap(output);
 %% arranging identities in pairs
@@ -24,7 +25,7 @@ output_same_uw=average_eeg(output,4);
 clear output
 
 %% average=0
-output_same_uw=norm_oulier_cap(output_same_uw);
+% output_same_uw=norm_oulier_cap(output_same_uw);
 
 %% saving
-save('/Users/dannem/Desktop/ERP_s03_dc_ica_not_cleaned.mat','output_same_uw');
+save('/Users/dannem/Desktop/ERP_s23_dc_not_cleaned.mat','output_same_uw');
