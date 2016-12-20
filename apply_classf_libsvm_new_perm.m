@@ -4,7 +4,7 @@
 %%%can run apply_classf_libsvm_onepair for each voxel-ROI later for better estimates
 %%% 1-time points, 2-identities/expressions, 3-blocks
 function [ap, d, c, acc]=apply_classf_libsvm_new_perm(V_sel, idpair,emo,lbls) %dp
-
+rng('shuffle')
 case_n=size(V_sel,3);
 
 S=case_n; N=case_n;
@@ -65,7 +65,13 @@ V_sel_2l=V_sel_2l';
 
 
 H=0;FA=0;
-tic
+% lenlbl=length(lbls)/2;
+% lbls=cat(2,repmat([1;0],1,lenlbl/2),repmat([0;1],1,lenlbl/2));
+% lbls=lbls(:,(randperm(lenlbl)));
+% lbls=lbls(:);
+% lbls(randperm(length(lbls)))=lbls;
+
+
 for case_k=1:case_n
 
     testind=[case_k*2-1 case_k*2];
@@ -75,8 +81,10 @@ for case_k=1:case_n
     test_V=V_sel_2l(testind, :); %taking only testing cases
 
     train_lbl=lbls(trainind, :);
-    test_lbl=lbls(testind, :);
-
+    test_lbl=lbls(testind, :)';
+    
+%     train_lbl(randperm(length(lbls)))=lbls;
+%     test_lbl=[1;0];
 %     %scaling 0-1 if not already in main script across all obs, categs..
 %     train_sz=size(train_V, 1);
 %     test_sz=size(test_V, 1);
@@ -93,12 +101,12 @@ for case_k=1:case_n
 
     optstr=['-s 0 -t 0 -c ', num2str(c), ' -q'];
     svmStruct = svmtrain(train_lbl, train_V, optstr);
-    [lbl_clsf, ~, ~] = svmpredict(test_lbl, test_V, svmStruct,'-q');%optstr
+    [lbl_clsf, ~, ~] = svmpredict(test_lbl', test_V, svmStruct,'-q');%optstr
 
-    acc(1, case_k)=mean(single(lbl_clsf==test_lbl));
+    acc(1, case_k)=mean(single(lbl_clsf'==test_lbl));
 
-    H=H+sum(double((lbl_clsf==1) & (test_lbl==1)));
-    FA=FA+sum(double((lbl_clsf==1) & (test_lbl==0)));
+    H=H+sum(double((lbl_clsf'==1) & (test_lbl==1)));
+    FA=FA+sum(double((lbl_clsf'==1) & (test_lbl==0)));
     
     
     

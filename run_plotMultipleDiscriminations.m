@@ -1,7 +1,7 @@
 %% only familiar
 out=perm_separation(60,54);
-across_4_els.ap=output_disc_across.ap(:,:,out.indOne);
-across_4_els_5bins.ap=output_disc_acorss_4el_5bins.ap(:,:,out.indOne);
+across.ap=output_disc_across.ap(:,:,out.indOne);
+within.ap=output_disc_within.ap(:,:,out.indOne);
 across_64_els_5bins.ap=output_disc_acorss_64el_5bins.ap(:,:,out.indOne);
 across_64_els_1bin.ap=output_disc_acorss_64el_1bin.ap(:,:,out.indOne);
 within_4_els_5bins.ap=output_disc_within_4els_5bins.ap(:,:,out.indOne);
@@ -34,7 +34,7 @@ within_64_els_5bins.ap=output_disc_within_64els_5bins.ap(:,:,out.indOne);
 %% plot
 
 plotMultipleDiscriminations(-100,900,1,1,...
-  across_4_els);
+  across, within);
 %%
 figure
 subplot(2,1,1)

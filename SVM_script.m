@@ -1,18 +1,18 @@
 %% run SVM srciptv
 % matrix in: el X im X bl X time
 %% parameters
-id_num=59;
+id_num=60;
 output_folder='/Users/dannem/Documents/Reconstruction/Analysis/SVM/Results/';
 mkdir(output_folder);
 c=1;
-perms=1000;
+perms=999;
 % load('/Users/VisRecLab/Documents/Reconstruction/SVM/Data/s10_single_trial_discr.mat')
 %% 6.03.2016
 %permutations
 try
     
 %     filename=['SVM_s20_ica'];
-    [output_disc3,perm_mat] = runSVM(output_same_w_3,id_num,c);
+    [output_disc3,perm_mat] = runSVM(output_same_uw,id_num,c,512);
 %     save([output_folder filename '_' datestr(now, 'dd-mmm-yyyy')  '.mat'],'output','perm_mat');
     toc
     
