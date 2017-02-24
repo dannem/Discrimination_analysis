@@ -1,5 +1,9 @@
 function [ap, d, c, acc]=apply_classf_libsvm_new(V_sel, idpair,emo,c) %dp
 %% c recommended 1.
+% V_sel (ids_idsX2_blocks)
+% idpair(identity pair e.g. [1,2])
+% emo: 1 or 2
+
 if nargin<4
     c=1;
 end

@@ -1,11 +1,17 @@
 %% only familiar
 out=perm_separation(60,54);
-across.ap=output_disc_across.ap(:,:,out.indOne);
-within.ap=output_disc_within.ap(:,:,out.indOne);
-across_64_els_5bins.ap=output_disc_acorss_64el_5bins.ap(:,:,out.indOne);
-across_64_els_1bin.ap=output_disc_acorss_64el_1bin.ap(:,:,out.indOne);
-within_4_els_5bins.ap=output_disc_within_4els_5bins.ap(:,:,out.indOne);
-within_64_els_5bins.ap=output_disc_within_64els_5bins.ap(:,:,out.indOne);
+across_norm.ap=results.across_norm.ap(:,:,out.indOne);
+within_norm.ap=results.within_norm.ap(:,:,out.indOne);
+within_scale.ap=results.within_scale.ap(:,:,out.indOne);
+across_scale.ap=results.across_scale.ap(:,:,out.indOne);
+across_paper.ap=results.across_paper.ap(:,:,out.indOne);
+within_paper.ap=results.within_paper.ap(:,:,out.indOne);
+within_scale_all.ap=results.within_scale_all.ap(:,:,out.indOne);
+across_scale_all.ap=results.across_scale_all.ap(:,:,out.indOne);
+% across_64_els_5bins.ap=output_disc_acorss_64el_5bins.ap(:,:,out.indOne);
+% across_64_els_1bin.ap=output_disc_acorss_64el_1bin.ap(:,:,out.indOne);
+% within_4_els_5bins.ap=output_disc_within_4els_5bins.ap(:,:,out.indOne);
+% within_64_els_5bins.ap=output_disc_within_64els_5bins.ap(:,:,out.indOne);
 % elec22.ap=output_by_elec(22).ap(:,:,out.indOne);
 % elec3.ap=output_by_elec(3).ap(:,:,out.indOne);
 % elec4.ap=output_by_elec(4).ap(:,:,out.indOne);
@@ -34,7 +40,9 @@ within_64_els_5bins.ap=output_disc_within_64els_5bins.ap(:,:,out.indOne);
 %% plot
 
 plotMultipleDiscriminations(-100,900,1,1,...
-  across, within);
+  across_norm, across_scale,across_paper,across_scale_all);
+plotMultipleDiscriminations(-100,900,1,1,...
+ within_norm, within_scale,within_paper,within_scale_all);
 %%
 figure
 subplot(2,1,1)

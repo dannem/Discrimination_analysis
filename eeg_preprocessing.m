@@ -10,9 +10,10 @@ clear ind
 %% zscoring 
 % output=zscore_across_elecs_trials_ids(output_03); %across trials and
 % electrodes and images`
-output=zscore_across_elecs_time(output); % across electrodes and time
+% output=zscore_across_elecs_time(output); % across electrodes and time
+output=zscore_iden_and_iter(output,3); % zscore + thresholding across trials: ids X emotions X repetitions
 %% normalizing the data (between 0 and 1) and removing outliers (>3 std).
-output=norm_oulier_cap(output);
+% output=norm_oulier_cap(output);
 %% arranging identities in pairs
 output=arrange_inds(output);
 %% averging trials
@@ -28,4 +29,4 @@ clear output
 % output_same_uw=norm_oulier_cap(output_same_uw);
 
 %% saving
-save('/Users/dannem/Desktop/ERP_s23_dc_not_cleaned.mat','output_same_uw');
+save('/Users/dannem/Desktop/ERP_s03.mat','output_same_uw');
