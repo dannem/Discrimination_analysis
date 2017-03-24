@@ -65,9 +65,6 @@ for case_k=1:case_n
 %     min_vals=min(train_V);
 %     train_V=train_V-repmat(min_vals, [train_sz 1]);
 %     max_vals=max(train_V);
-%     train_V=train_V./repmat(max_vals, [train_sz 1]);
-%     test_V=test_V-repmat(min_vals, [test_sz 1]);
-%     test_V=test_V./repmat(max_vals, [test_sz 1]);
 
     optstr=['-s 0 -t 0 -c ', num2str(c), ' -q'];
     svmStruct = svmtrain(train_lbl, train_V, optstr);
